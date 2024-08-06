@@ -1,0 +1,14 @@
+[template]
+cargo_generate_version = ">=0.17.4"
+
+[placeholders.project-id]
+type = "string"
+prompt = "Project ID (unique identifier of your language server(s))"
+
+[placeholders.project-description]
+type = "string"
+prompt = "Project description"
+
+[placeholders.repository-url]
+type = "string"
+prompt = "Repository URL"
