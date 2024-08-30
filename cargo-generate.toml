@@ -1,14 +1,20 @@
 [template]
 cargo_generate_version = ">=0.17.4"
 
-[placeholders.project-id]
-type = "string"
-prompt = "Project ID (unique identifier of your language server(s))"
+[placeholders]
+extension_description = { type = "string", prompt = "Extension description" }
+extension_author = { type = "string", prompt = "Extension author" }
+extension_repository = { type = "string", prompt = "Extension repository URL" }
+include_grammar = { type = "bool", prompt = "Do you want to add a new grammar?" }
+include_lsp = { type = "bool", prompt = "Do you want to add a new LSP?" }
 
-[placeholders.project-description]
-type = "string"
-prompt = "Project description"
+[conditional.'include_grammar'.placeholders]
+language_name = { prompt = "Language name (e.g., 'python', 'rust', 'javascript')", type = "string" }
+grammar_repository = { prompt = "Grammar repository URL", type = "string" }
+grammar_commit = { prompt = "Grammar commit hash", type = "string" }
 
-[placeholders.repository-url]
-type = "string"
-prompt = "Repository URL"
+[conditional.'!include_lsp']
+ignore = ["Cargo.toml", "src/"]
+
+[conditional.'!include_grammar']
+ignore = ["languages/"]
