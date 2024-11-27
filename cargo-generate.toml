@@ -7,6 +7,7 @@ extension_author = { type = "string", prompt = "Extension author" }
 extension_repository = { type = "string", prompt = "Extension repository URL" }
 include_grammar = { type = "bool", prompt = "Do you want to add a new grammar?" }
 include_lsp = { type = "bool", prompt = "Do you want to add a new LSP?" }
+include_theme = { type = "bool", prompt = "Do you want to add a new theme?" }
 
 [conditional.'include_grammar'.placeholders]
 language_name = { prompt = "Language name (e.g., 'python', 'rust', 'javascript')", type = "string" }
@@ -14,7 +15,13 @@ grammar_repository = { prompt = "Grammar repository URL", type = "string" }
 grammar_commit = { prompt = "Grammar commit hash", type = "string" }
 
 [conditional.'!include_lsp']
-ignore = ["Cargo.toml", "src/"]
+ignore = ["Cargo.toml", "src/", "rust-toolchain.toml"]
 
 [conditional.'!include_grammar']
 ignore = ["languages/"]
+
+[conditional.'!include_theme']
+ignore = ["themes/"]
+
+[conditional.'include_theme'.placeholders]
+theme_name = { prompt = "Theme name", type = "string" }
