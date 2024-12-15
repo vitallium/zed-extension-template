@@ -11,3 +11,9 @@ repository = "{{ extension_repository }}"
 repository = "{{ grammar_repository }}"
 commit =  "{{ grammar_commit }}"
 {% endif %}
+
+{% if include_lsp %}
+[language_servers.{{ lsp_name | snake_case }}]
+name = "{{ lsp_name | upper_camel_case }}"
+languages = []
+{% endif %}

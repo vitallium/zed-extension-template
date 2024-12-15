@@ -14,14 +14,17 @@ language_name = { prompt = "Language name (e.g., 'python', 'rust', 'javascript')
 grammar_repository = { prompt = "Grammar repository URL", type = "string" }
 grammar_commit = { prompt = "Grammar commit hash", type = "string" }
 
+[conditional.'include_theme'.placeholders]
+theme_name = { prompt = "Theme name", type = "string" }
+
+[conditional.'include_lsp'.placeholders]
+lsp_name = { prompt = "Language server name", type = "string" }
+
 [conditional.'!include_lsp']
-ignore = ["Cargo.toml", "src/", "rust-toolchain.toml"]
+ignore = ["Cargo.toml", "src/", "rust-toolchain.toml", ".github/"]
 
 [conditional.'!include_grammar']
 ignore = ["languages/"]
 
 [conditional.'!include_theme']
 ignore = ["themes/"]
-
-[conditional.'include_theme'.placeholders]
-theme_name = { prompt = "Theme name", type = "string" }
