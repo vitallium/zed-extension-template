@@ -21,7 +21,7 @@ theme_name = { prompt = "Theme name", type = "string" }
 lsp_name = { prompt = "Language server name", type = "string" }
 
 [conditional.'!include_lsp']
-ignore = ["Cargo.toml", "src/", "rust-toolchain.toml", ".github/"]
+ignore = ["Cargo.toml", "src/", ".github/"]
 
 [conditional.'!include_grammar']
 ignore = ["languages/"]
